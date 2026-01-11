@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 
 # ലേഔട്ട് സെറ്റിംഗ്സ്
 st.set_page_config(page_title="The Real Trade", layout="wide")
-st.markdowm("<h1 style='text-align: center;'>THE REAL TRADE</h1>", unsafe_allow_html =True)
+st.markdown("<h1 style='text-align: center;'>THE REAL TRADE</h1>", unsafe_allow_html =True)
 st.divider()
 # സൈഡ് ബാർ
 st.sidebar.title("Trading Settings")
