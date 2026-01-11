@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.graph_objects as go
+import yfinance as yf
 
 # ലേഔട്ട് സെറ്റിംഗ്സ്
 st.set_page_config(page_title="The Real Trade", layout="wide")
@@ -10,6 +11,14 @@ st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
 
 st.header(f"Strategy: {strategy}")
+
+def get_live_nifty():
+    nifty = yf.Ticker("^NSEI")
+    data = nifty.history(period="1d")
+    return round(data['Close'].iloc[-1], 2)
+
+live_price = get_live_nifty()
+st.sidebar.metric("Nifrty 50 Live", Live_price)
 
 if strategy == "Nifty Calculation":
     col1, col2 = st.columns(2)
