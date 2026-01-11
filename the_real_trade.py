@@ -47,7 +47,7 @@ def plot_payoff(entry, target, sl):
 
     fig.add_hline(y=, line_dash="dash", line_color="white")
 
-    fig.update_layout(title="Strategy Payoff Graph", xaxis_title="Price", yaxis_title="Profit/Loss", template="plotly_dark")))
+    fig.update_layout(title="Strategy Payoff Graph", xaxis_title="Price", yaxis_title="Profit/Loss", template="plotly_dark")
 
 st.subheader("Profit/Loss Visualization")
 
