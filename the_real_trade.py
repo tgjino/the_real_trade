@@ -95,6 +95,7 @@ def plot_payoff(entry, target, sl):
 
 st.subheader("Profit/Loss Visualization")
 # ഗ്രാഫ് കാണിക്കുന്നു
+fig = plot_payoff(22000, 22100, 21950)
 if live_price > 0:
     fig.add_vline(
         x=live_price,
@@ -103,6 +104,5 @@ if live_price > 0:
         annotation_text=f"LTP: {live_price}",
         annotation_position ="top left"
     )
-fig = plot_payoff(22000, 22100, 21950)
 st.plotly_chart(fig, use_container_width=True)
 
