@@ -10,10 +10,15 @@ st.divider()
 # സൈഡ് ബാർ
 
 def get_live_nifty():
-    nifty = yf.Ticker("^NSEI")
-    data = nifty.history(period="1d")
-    return round(data['Close'].iloc[-1], 2)
-
+    try:
+        nifty = yf.Ticker("^NSEI")
+        data = nifty.history(period="1d")
+        if not data.empty:
+            return round(data['Close'].iloc[-1], 2) 
+        else:
+            return 0.0
+    except:
+        return 0.0
 live_price = get_live_nifty()
 st.sidebar.metric("Nifrty 50 Live", live_price)
 
