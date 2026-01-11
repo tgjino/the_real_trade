@@ -6,11 +6,8 @@ import yfinance as yf
 st.set_page_config(page_title="The Real Trade", layout="wide")
 st.markdown("<h1 style='text-align: center;'>THE REAL TRADE</h1>", unsafe_allow_html =True)
 st.divider()
-# സൈഡ് ബാർ
-st.sidebar.title("Trading Settings")
-strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
 
-st.header(f"Strategy: {strategy}")
+# സൈഡ് ബാർ
 
 def get_live_nifty():
     nifty = yf.Ticker("^NSEI")
@@ -19,6 +16,12 @@ def get_live_nifty():
 
 live_price = get_live_nifty()
 st.sidebar.metric("Nifrty 50 Live", live_price)
+
+st.sidebar.title("Trading Settings")
+strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
+
+st.header(f"Strategy: {strategy}")
+
 
 if strategy == "Nifty Calculation":
     col1, col2 = st.columns(2)
