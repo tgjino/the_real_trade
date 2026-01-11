@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 # ലേഔട്ട് സെറ്റിംഗ്സ്
 st.set_page_config(page_title="The Real Trade", layout="wide")
 st.title("THE REAL TRADE")
+st.divider()
 # സൈഡ് ബാർ
 st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
