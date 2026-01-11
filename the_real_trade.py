@@ -27,11 +27,35 @@ if strategy == "Nifty Calculation":
     st.info("Tip: This target is based on a risk rivard of 1:2")
 elif strategy =='Jade Lizard':
     st.title("jade Lizard Strategy Analyzer 📈")
-    st.write("Selected Jade Lizard strategy")
+    # st.write("Selected Jade Lizard strategy")
 
 elif strategy == "Iron Condor":
     st.title("Iron Condor Analyzer 🦅")
-    st.write("Selected Iron Condor Analyzer")
+    # st.write("Selected Iron Condor Analyzer")
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1: bp = st.number_input("Buy Put", value=21500)
+    with col2: sp = st.number_input("Sell Put", value=21700)
+    with col3: sc = st.number_input("Sell Call", value=22000)
+    with col4: bc = st.number_input("Buy Call", value=22200)
+
+    prem = st.number_input("Net Premium Recived", value=40.0)
+
+    prices = list(range(bp -200, bc + 200, 10))
+
+def calc_ic(p):
+    profit = prem
+    profit -= max(0, sp - p) - max(0, bp - p)
+    profit -= max(0, p - sc) - max(0, p - bc)
+    return profit
+
+profit = [calc_ic(p) for p in prices]
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=prices, y=profits, fill='tozeroy', name='Iron Condor'))
+fig.update_layout(template="plotly_dark", title="Irom Condor Payoff")
+st.plotly_chart(fig, use_container_width=True)
+
 # പേ-ഓഫ് ഗ്രാഫ് ഫങ്ക്ഷൻ
 def plot_payoff(entry, target, sl):
     x = [sl - 100, sl, entry, target, target + 100]
