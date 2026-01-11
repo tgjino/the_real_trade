@@ -59,6 +59,12 @@ elif strategy == "Iron Condor":
     fig.update_layout(template="plotly_dark", title="Irom Condor Payoff")
     st.plotly_chart(fig, use_container_width=True)
 
+    max_profit = prem
+    max_loss = (sp - bp) - prem
+    col1, col2 = st.columns(2)
+    col1.metric("Max Profit", f"rs {max_profit * 50}")
+    col2.metric("Max Loss", f"rs {max_loss * 50}")
+
 # പേ-ഓഫ് ഗ്രാഫ് ഫങ്ക്ഷൻ
 def plot_payoff(entry, target, sl):
     x = [sl - 100, sl, entry, target, target + 100]
