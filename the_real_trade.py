@@ -18,7 +18,7 @@ def get_live_nifty():
     return round(data['Close'].iloc[-1], 2)
 
 live_price = get_live_nifty()
-st.sidebar.metric("Nifrty 50 Live", Live_price)
+st.sidebar.metric("Nifrty 50 Live", live_price)
 
 if strategy == "Nifty Calculation":
     col1, col2 = st.columns(2)
