@@ -42,7 +42,7 @@ def plot_payoff(entry, target, sl):
     x = [sl - 100, sl, entry, target, taget + 100]
     Y = [-(entry-sl), -(entry-sl), 0, (target-entry), (target-entry)]
 
-    fig = go.figure()
+    fig = go.Figure()
     fig.add_trace(go.Scatter(x=x, y=y, mode='lines+markers', name='P&L'))
 
     fig.add_hline(y=0, line_dash="dash", line_color="white")
