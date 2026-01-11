@@ -1,4 +1,5 @@
 import streamlit as st 
+import plotly.graph_objects as go
 st.set_page_config(page_title = "The Real Trade", layout="wide")
 
 st.sidebar.title("Trading Settings")
@@ -36,3 +37,19 @@ if st.button("Calculate Profit"):
         st.success(f"Yours approximate profit: {net_profit}")
     else:
         st.warning("Give a amount")
+
+def plot_payoff(entry, target, sl):
+    x = [sl - 100, sl, entry, target, taget + 100]
+    Y = [-(entry-sl), -(entry-sl), 0, (target-entry), (target-entry)]
+
+    fig = go.figure()
+    fig.add_trace(go.Scatter(x=x, y=y, mode='lines+markers', name='P&L'))
+
+    fig.add_hline(y=, line_dash="dash", line_color="white")))
+
+    fig.update_layout(title="Strategy Payoff Graph", xaxis_title="Price", yaxis_title="Profit/Loss", template="plotly_dark")))
+
+st.subheader("Profit/Loss Visualization")
+
+fig = plot_payoff(22000, 22100, 21950)
+st.plotly_chart(fig, use_container_width=True')
