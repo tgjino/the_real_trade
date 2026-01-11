@@ -49,7 +49,7 @@ def calc_ic(p):
     profit -= max(0, p - sc) - max(0, p - bc)
     return profit
 
-profit = [calc_ic(p) for p in prices]
+profits = [calc_ic(p) for p in prices]
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=prices, y=profits, fill='tozeroy', name='Iron Condor'))
