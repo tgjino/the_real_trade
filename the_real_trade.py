@@ -16,13 +16,21 @@ if strategy == "Nifty Calculation":
         entry = st.number_input("Entry Price", value=22000.0)
         stop_loss_pct = st.slider("Stop Loss (%)", 0.5, 5.0, 1.0)
     
-    target = entry + (entry * (stop_loss_pct * 2 / 100))
-    sl_price = entry - (entry * (stop_loss_pct / 100))
+        target = entry + (entry * (stop_loss_pct * 2 / 100))
+        sl_price = entry - (entry * (stop_loss_pct / 100))
     
     with col2:
+        st.write("### Calculated Levels")
         st.success(f"Target: {target:.2f}")
         st.error(f"Stop Loss: {sl_price:.2f}")
+    st.info("Tip: This target is based on a risk rivard of 1:2")
+elif strategy =='Jade Lizard':
+    st.title("jade Lizard Strategy Analyzer 📈")
+    st.write("Selected Jade Lizard strategy")
 
+elif strategy == "Iron Condor":
+    st.title("Iron Condor Analyzer 🦅")
+    st.write("Selected Iron Condor Analyzer")
 # പേ-ഓഫ് ഗ്രാഫ് ഫങ്ക്ഷൻ
 def plot_payoff(entry, target, sl):
     x = [sl - 100, sl, entry, target, target + 100]
