@@ -52,4 +52,4 @@ def plot_payoff(entry, target, sl):
 st.subheader("Profit/Loss Visualization")
 
 fig = plot_payoff(22000, 22100, 21950)
-st.plotly_chart(fig, use_container_width=True')
+st.plotly_chart(fig, use_container_width=True)
