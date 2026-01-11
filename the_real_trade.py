@@ -7,6 +7,6 @@ buy_premium = st.number_input("Buy Premium", value = 0.0)
 if st.button("Calculate Profit"):
     if sell_premium > 0:
         net_profit = (sell_premium - buy_premium) * 25
-        st.sucess(f"Yours approximate profit: {net_profit}")
+        st.success(f"Yours approximate profit: {net_profit}")
     else:
         st.warning("Give a amount")
