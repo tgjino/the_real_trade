@@ -45,7 +45,7 @@ def plot_payoff(entry, target, sl):
     fig = go.figure()
     fig.add_trace(go.Scatter(x=x, y=y, mode='lines+markers', name='P&L'))
 
-    fig.add_hline(y=, line_dash="dash", line_color="white")))
+    fig.add_hline(y=, line_dash="dash", line_color="white")
 
     fig.update_layout(title="Strategy Payoff Graph", xaxis_title="Price", yaxis_title="Profit/Loss", template="plotly_dark")))
 
