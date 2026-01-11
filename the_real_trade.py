@@ -42,20 +42,22 @@ elif strategy == "Iron Condor":
     prem = st.number_input("Net Premium Recived", value=40.0)
 
 
-def calc_ic(p):
-    profit = prem
-    profit -= max(0, sp - p) - max(0, bp - p)
-    profit -= max(0, p - sc) - max(0, p - bc)
-    return profit
+    def calc_ic(p):
+        profit = prem
+        profit -= max(0, sp - p) - max(0, bp - p)
+        profit -= max(0, p - sc) - max(0,p - bc)
+        return profit
 
-prices = list(range(bp -200, bc + 200, 10))
+    
+    prices = list(range(bp -200, bc + 200, 10))
 
-profits = [calc_ic(p) for p in prices]
+    profits = [calc_ic(p) for p in prices]
 
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=prices, y=profits, fill='tozeroy', name='Iron Condor'))
-fig.update_layout(template="plotly_dark", title="Irom Condor Payoff")
-st.plotly_chart(fig, use_container_width=True)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=prices, y=profits, fill='tozeroy', name='Iron Condor'))
+    fig.update_layout(template="plotly_dark", title="Irom Condor Payoff")
+    st.plotly_chart(fig, use_container_width=True)
 
 # പേ-ഓഫ് ഗ്രാഫ് ഫങ്ക്ഷൻ
 def plot_payoff(entry, target, sl):
