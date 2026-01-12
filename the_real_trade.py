@@ -20,6 +20,10 @@ def get_live_nifty():
             return current, low, high             
     except:
         return 0.0, 0.0, 0.0
+
+st.sidebar.title("Trading Settings")
+strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])        
+
 current, low, high = get_live_nifty()
 # st.sidebar.metric("Nifrty 50 Live", live_price)
 if current > 0:
@@ -70,8 +74,6 @@ if auto_update:
 #         time.sleep(10)
 #         st.rerun()
 
-st.sidebar.title("Trading Settings")
-strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
 
 st.header(f"Strategy: {strategy}")
 
