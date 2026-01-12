@@ -28,16 +28,16 @@ def get_live_nifty():
 def render_price_ui(current, openPrice):
     if current > 0:
     openCurrent_diff = round(current-openPrice,2)
-    # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
-    if openCurrent_diff >= 0:
-        color = "green"
-        icon = "▲" # മുകളിലോട്ട്
-    else:
-        color = "red"
-        icon = "▼" # താഴോട്ട്if openCurrent_diff>=0:
+        # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
+        if openCurrent_diff >= 0:
+            color = "green"
+            icon = "▲" # മുകളിലോട്ട്
+        else:
+            color = "red"
+            icon = "▼" # താഴോട്ട്if openCurrent_diff>=0:
 
-    st.markdown(
-        f"### Nifty 50 Market Today 📈 : <span style='color:{color}'>{current}({icon}{openCurrent_diff})</span>",unsafe_allow_html=True) 
+        st.markdown(
+            f"### Nifty 50 Market Today 📈 : <span style='color:{color}'>{current}({icon}{openCurrent_diff})</span>",unsafe_allow_html=True) 
 
 current, low, high,openPrice = get_live_nifty()
 
