@@ -27,7 +27,7 @@ def get_live_nifty():
 
 def render_price_ui(current, openPrice):
     if current > 0:
-    openCurrent_diff = round(current-openPrice,2)
+        openCurrent_diff = round(current-openPrice,2)
         # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
         if openCurrent_diff >= 0:
             color = "green"
