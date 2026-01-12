@@ -62,11 +62,12 @@ if current > 0:
     # )
 
     # st.plotly_chart(fig_range, use_container_width = True)
+    st.markdown("""<style>[data-testid="stMetricLabel"] {font-size: 14px;}[data-testid="stMetricValue"]{font-size: 20px; /* വാല്യൂവിന്റെ സൈസ് */}</style>""", unsafe_allow_html=True)
 
     col_l,col_h, col_o =st.columns(3)
-    col_l.metric("Day Low", f"{low}")
-    col_h.metric("Day high", f"{high}")
-    col_o.metric("Day Open", f"{openPrice}")
+    col_o.metric("Open", f"{openPrice}")
+    col_h.metric("high", f"{high}")
+    col_l.metric("Low", f"{low}")
 
     st.divider()
 
