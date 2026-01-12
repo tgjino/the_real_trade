@@ -41,7 +41,7 @@ if current > 0:
         icon = "▼" # താഴോട്ട്if openCurrent_diff>=0:
 
     st.markdown(
-        f"### Nifty 50 Market Today 📈 : <span style='color:{color}'>{current}({openCurrent_diff}{icon})</span>",unsafe_allow_html=True) 
+        f"### Nifty 50 Market Today 📈 : <span style='color:{color}'>{current}({icon}{openCurrent_diff})</span>",unsafe_allow_html=True) 
     # fig_range = go.Figure(go.Indicator(
     # mode = "gauge+number",
     # value = current,
