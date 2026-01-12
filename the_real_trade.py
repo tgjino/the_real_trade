@@ -24,41 +24,7 @@ def get_live_nifty():
 st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])        
 
-current, low, high = get_live_nifty()
-# st.sidebar.metric("Nifrty 50 Live", live_price)
-if current > 0:
-    st.markdown(f"### Nifty 50 Market Today 📈")
-    fig_range = go.Figure(go.Indicator(
-        mode = "gauge+number",
-        value = current,
-        domain = {'x': [0,1], 'y': [0,1]},
-        gauge = {
-            'axis':{'range': [low, high], 'tickwidth':1},
-            'bar': {'color': "#00eeff"},
-            'steps':[{'range':[low, high], 'color':"rgba(255, 255, 255, 0.1)"}],
-            'threshold':{
-                'line':{'color':"yellow", 'width': 4},
-                'thickness': 0.75,
-                'value': current
-            }
-
-        }
-    ))
-
-    fig_range.update_layout(
-        height=250,
-        margin= dict(l=50, r=50, t=30, b=30),
-        template="plotly_dark"
-    )
-
-    st.plotly_chart(fig_range, use_container_width = True)
-
-    col_l, col_c, col_h =st.columns(3)
-    col_l.metric("Day Low", f"rs{low}")
-    col_c.metric("Current Spot", f"rs{current}")
-    col_h.metric("Day high", f"rs{high}")
-
-    st.divider()
+#--------------------
 
 
 # auto_update = st.sidebar.toggle('Enabel Auto Update (10s)')
