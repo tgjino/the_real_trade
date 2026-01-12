@@ -9,6 +9,8 @@ st.divider()
 
 # സൈഡ് ബാർ
 auto_update = st.sidebar.toggle('Enable Auto Update (10s)')
+st.sidebar.title("Trading Settings")
+strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
 
 def get_live_nifty():
     try:
@@ -23,15 +25,8 @@ def get_live_nifty():
     except:
         return 0.0, 0.0, 0.0
 
-# current, low, high = get_live_nifty()
-
-st.sidebar.title("Trading Settings")
-strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])        
-
-
-current, low, high,openPrice = get_live_nifty()
-# st.sidebar.metric("Nifrty 50 Live", live_price)
-if current > 0:
+def render_price_ui(current, openPrice):
+    if current > 0:
     openCurrent_diff = round(current-openPrice,2)
     # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
     if openCurrent_diff >= 0:
@@ -43,6 +38,20 @@ if current > 0:
 
     st.markdown(
         f"### Nifty 50 Market Today 📈 : <span style='color:{color}'>{current}({icon}{openCurrent_diff})</span>",unsafe_allow_html=True) 
+
+current, low, high,openPrice = get_live_nifty()
+
+@st.fragment(run_every="10s")
+def display_live_price():
+    current, low, high,openPrice = get_live_nifty()
+    render_price_ui(current,openPrice)
+
+if auto_update:
+    display_live_price()
+else:
+    render_price_ui(current, openPrice)
+
+# st.sidebar.metric("Nifrty 50 Live", live_price)
     # fig_range = go.Figure(go.Indicator(
     # mode = "gauge+number",
     # value = current,
