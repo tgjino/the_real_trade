@@ -14,14 +14,19 @@ def get_live_nifty():
         nifty = yf.Ticker("^NSEI")
         data = nifty.history(period="1d")
         if not data.empty:
-            return round(data['Close'].iloc[-1], 2) 
-        else:
-            return 0.0
+            current = round(data['Close'].iloc[-1], 2)
+            high = round(data['High'].max(), 2)
+            low = round(data['Low'].min(), 2)
+            return current, low, high 
+        
+            
     except:
-        return 0.0
-live_price = get_live_nifty()
-st.sidebar.metric("Nifrty 50 Live", live_price)
-
+        return 0.0, 0.0, 0.0
+current, low, high = get_live_nifty()
+# st.sidebar.metric("Nifrty 50 Live", live_price)
+if current > 0:
+    st.sidebar.plotly_chart(draw_nifty_range_bar(low, high, current), use_container_width=True)
+    st.sidebar.write(f"Low: {low} | High: {high}")
 if st.sidebar.button("Refresh Now"):
     st.rerun()
 
