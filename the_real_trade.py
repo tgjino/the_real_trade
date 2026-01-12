@@ -33,9 +33,9 @@ if current > 0:
         value = current,
         domain = {'x': [0,1], 'y': [0,1]},
         gauge = {
-            'axis':{'rane': [low, high], 'tickwidth':1},
-            'bar': {'color': "#00eef"},
-            'step':[{'range':[low, high], 'color':"rgba(255, 255, 255, 0.1)"}],
+            'axis':{'range': [low, high], 'tickwidth':1},
+            'bar': {'color': "#00eeff"},
+            'steps':[{'range':[low, high], 'color':"rgba(255, 255, 255, 0.1)"}],
             'threshold':{
                 'line':{'color':"yellow", 'width': 4},
                 'thickness': 0.75,
@@ -46,17 +46,17 @@ if current > 0:
     ))
 
     fig_range.update_layout(
-        heigh=250,
+        height=250,
         margin= dict(l=50, r=50, t=30, b=30),
         template="plotly_dark"
     )
 
     st.plotly_chart(fig_range, use_container_width = True)
 
-    clo_l, col_c, col_h =st.columns(3)
-    clo_l.metric("Day Low", f"rs{low}")
-    clo_l.metric("Current Spot", f"rs{current}")
-    clo_l.metric("Day high", f"rs{high}")
+    col_l, col_c, col_h =st.columns(3)
+    col_l.metric("Day Low", f"rs{low}")
+    col_l.metric("Current Spot", f"rs{current}")
+    col_l.metric("Day high", f"rs{high}")
 
     st.divider()
 
@@ -146,12 +146,12 @@ def plot_payoff(entry, target, sl):
 st.subheader("Profit/Loss Visualization")
 # ഗ്രാഫ് കാണിക്കുന്നു
 fig = plot_payoff(22000, 22100, 21950)
-if live_price > 0:
+if current > 0:
     fig.add_vline(
-        x=live_price,
+        x=current,
         line_dash="dash",
         line_color="yellow",
-        annotation_text=f"LTP: {live_price}",
+        annotation_text=f"LTP: {current}",
         annotation_position ="top left"
     )
 st.plotly_chart(fig, use_container_width=True)
