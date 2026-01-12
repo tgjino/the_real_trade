@@ -15,10 +15,10 @@ def get_live_nifty():
         data = nifty.history(period="1d")
         if not data.empty:
             current = round(data['Close'].iloc[-1], 2)
+            openPrice = round(data['Open'].iloc[-1], 2)
             high = round(data['High'].max(), 2)
             low = round(data['Low'].min(), 2)
-            openp = round(data['Open'].max(), 2)
-            return current, low, high, openp
+            return current, low, high, openPrice
     except:
         return 0.0, 0.0, 0.0
 
@@ -28,7 +28,7 @@ st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])        
 
 
-current, low, high,openp = get_live_nifty()
+current, low, high,openPrice = get_live_nifty()
 # st.sidebar.metric("Nifrty 50 Live", live_price)
 if current > 0:
     st.markdown(f"### Nifty 50 Market Today 📈")
@@ -57,7 +57,7 @@ if current > 0:
     col_l.metric("Day Low", f"{low}")
     col_c.metric("Current Spot", f"{current}")
     col_h.metric("Day high", f"{high}")
-    col_o.metric("Day high", f"{openp}")
+    col_o.metric("Day high", f"{openPrice}")
 
     st.divider()
 
