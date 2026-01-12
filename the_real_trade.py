@@ -31,7 +31,7 @@ strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade L
 current, low, high,openPrice = get_live_nifty()
 # st.sidebar.metric("Nifrty 50 Live", live_price)
 if current > 0:
-    st.markdown(f"### Nifty 50 Market Today 📈")
+    st.markdown(f"### Nifty 50 Market Today 📈") col_c.metric("Current Spot", f"{current}")
     # fig_range = go.Figure(go.Indicator(
     # mode = "gauge+number",
     # value = current,
@@ -55,9 +55,8 @@ if current > 0:
 
     col_l, col_c, col_h, col_o =st.columns(4)
     col_l.metric("Day Low", f"{low}")
-    col_c.metric("Current Spot", f"{current}")
     col_h.metric("Day high", f"{high}")
-    col_o.metric("Day high", f"{openPrice}")
+    col_o.metric("Day Open", f"{openPrice}")
 
     st.divider()
 
