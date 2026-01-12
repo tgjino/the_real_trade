@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 import yfinance as yf
-
+import time
 # ലേഔട്ട് സെറ്റിംഗ്സ്
 st.set_page_config(page_title="The Real Trade", layout="wide")
 st.markdown("<h1 style='text-align: center;'>THE REAL TRADE</h1>", unsafe_allow_html =True)
@@ -21,6 +21,22 @@ def get_live_nifty():
         return 0.0
 live_price = get_live_nifty()
 st.sidebar.metric("Nifrty 50 Live", live_price)
+
+if st.sidebar.button("Refresh Now"):
+    st.rerun()
+
+auto_update = st.sidebar.toggle('Enabel Auto Update (10s)')
+
+if auto_update:
+    time.sleep(10)
+    st.rerun()
+    
+# def auto_refresh():
+#     while True:
+#         current_price = get_live_nifty()
+#         st.sidebar.metric("Nifty 50 Live", current_price)
+#         time.sleep(10)
+#         st.rerun()
 
 st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])
