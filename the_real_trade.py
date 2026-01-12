@@ -48,6 +48,14 @@ def display_live_price():
 
 if auto_update:
     display_live_price()
+    st.markdown("""<style>[data-testid="stMetricLabel"] {font-size: 14px;}[data-testid="stMetricValue"]{font-size: 20px; /* വാല്യൂവിന്റെ സൈസ് */}</style>""", unsafe_allow_html=True)
+
+    col_o,col_h, col_l =st.columns(3)
+    col_o.metric("Open", f"{openPrice}")
+    col_h.metric("high", f"{high}")
+    col_l.metric("Low", f"{low}")
+
+    st.divider()
 else:
     render_price_ui(current, openPrice)
 
