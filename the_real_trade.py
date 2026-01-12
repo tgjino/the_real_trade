@@ -33,7 +33,7 @@ current, low, high,openPrice = get_live_nifty()
 if current > 0:
     openCurrent_diff = round(current-openPrice,2)
     # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
-    if diff >= 0:
+    if openCurrent_diff >= 0:
         color = "green"
         icon = "▲" # മുകളിലോട്ട്
     else:
