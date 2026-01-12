@@ -8,6 +8,7 @@ st.markdown("<h1 style='text-align: center;'>THE REAL TRADE</h1>", unsafe_allow_
 st.divider()
 
 # സൈഡ് ബാർ
+auto_update = st.sidebar.toggle('Enable Auto Update (10s)')
 
 def get_live_nifty():
     try:
