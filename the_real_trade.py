@@ -55,8 +55,8 @@ if current > 0:
 
     col_l, col_c, col_h =st.columns(3)
     col_l.metric("Day Low", f"rs{low}")
-    col_l.metric("Current Spot", f"rs{current}")
-    col_l.metric("Day high", f"rs{high}")
+    col_c.metric("Current Spot", f"rs{current}")
+    col_h.metric("Day high", f"rs{high}")
 
     st.divider()
 
