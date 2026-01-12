@@ -31,7 +31,19 @@ strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade L
 current, low, high,openPrice = get_live_nifty()
 # st.sidebar.metric("Nifrty 50 Live", live_price)
 if current > 0:
-    st.markdown(f"### Nifty 50 Market Today 📈 : : blue[{current}]") 
+    openCurrent_diff = round(current-openPrice,2)
+    # 2. കണ്ടീഷൻ അനുസരിച്ച് കളറും ചിഹ്നവും നിശ്ചയിക്കുന്നു
+    if diff >= 0:
+        color = "green"
+        icon = "▲" # മുകളിലോട്ട്
+    else:
+        color = "red"
+        icon = "▼" # താഴോട്ട്if openCurrent_diff>=0:
+
+    st.markdown(
+        f"### Nifty 50 Market Today 📈 :
+        <span style='color:{color}'>{current} {icon} 
+        ({openCurrent_diff})</span>",unsafe_allow_html=True) 
     # fig_range = go.Figure(go.Indicator(
     # mode = "gauge+number",
     # value = current,
