@@ -27,7 +27,7 @@ if current > 0:
     fig_range = go.Figure(go.Indicator(
         mode = "gauge+number",
         value = current,
-        domain = {'x': [0,1], 'y': [0,1]}
+        domain = {'x': [0,1], 'y': [0,1]},
         gauge = {
             'axis':{'rane': [low, high], 'tickwidth':1},
             'bar': {'color': "#00eef"},
