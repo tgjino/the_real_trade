@@ -61,11 +61,11 @@ if current > 0:
     st.divider()
 
 
-auto_update = st.sidebar.toggle('Enabel Auto Update (10s)')
+# auto_update = st.sidebar.toggle('Enabel Auto Update (10s)')
 
-if auto_update:
-    time.sleep(10)
-    st.rerun()
+# if auto_update:
+#     time.sleep(10)
+#     st.rerun()
     
 # def auto_refresh():
 #     while True:
