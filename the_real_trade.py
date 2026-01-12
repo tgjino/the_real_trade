@@ -21,6 +21,8 @@ def get_live_nifty():
     except:
         return 0.0, 0.0, 0.0
 
+current, low, high = get_live_nifty()
+
 st.sidebar.title("Trading Settings")
 strategy = st.sidebar.selectbox("Select Strategy", ["Nifty Calculation", "Jade Lizard", "Iron Condor"])        
 
